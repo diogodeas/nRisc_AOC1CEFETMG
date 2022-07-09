@@ -1,0 +1,60 @@
+#! /usr/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x562e5fd4ec40 .scope module, "test_pAND" "test_pAND" 2 1;
+ .timescale 0 0;
+v0x562e5fd61140_0 .var "Branch", 0 0;
+v0x562e5fd61210_0 .net "out", 0 0, L_0x562e5fd614d0;  1 drivers
+v0x562e5fd612e0_0 .var "zeroULA", 0 0;
+S_0x562e5fd4edd0 .scope module, "gate1" "pAND" 2 21, 3 1 0, S_0x562e5fd4ec40;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "zeroULA";
+    .port_info 1 /OUTPUT 1 "out";
+    .port_info 2 /INPUT 1 "Branch";
+L_0x562e5fd613e0 .functor NOT 1, v0x562e5fd612e0_0, C4<0>, C4<0>, C4<0>;
+L_0x562e5fd614d0 .functor AND 1, L_0x562e5fd613e0, v0x562e5fd61140_0, C4<1>, C4<1>;
+v0x562e5fd3d490_0 .net "Branch", 0 0, v0x562e5fd61140_0;  1 drivers
+v0x562e5fd60e80_0 .net *"_ivl_0", 0 0, L_0x562e5fd613e0;  1 drivers
+v0x562e5fd60f60_0 .net "out", 0 0, L_0x562e5fd614d0;  alias, 1 drivers
+v0x562e5fd61000_0 .net "zeroULA", 0 0, v0x562e5fd612e0_0;  1 drivers
+    .scope S_0x562e5fd4ec40;
+T_0 ;
+    %delay 1, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x562e5fd612e0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x562e5fd61140_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x562e5fd612e0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x562e5fd61140_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x562e5fd612e0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x562e5fd61140_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x562e5fd612e0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x562e5fd61140_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_0x562e5fd4ec40;
+T_1 ;
+    %vpi_call 2 18 "$monitor", "Time=%0d, zeroULA: %b, Branch: %b, out: %b", $time, v0x562e5fd612e0_0, v0x562e5fd61140_0, v0x562e5fd61210_0 {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "test_pAND.v";
+    "pAND.v";
