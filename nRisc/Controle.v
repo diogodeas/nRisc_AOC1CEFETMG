@@ -1,5 +1,5 @@
 module Controle (
-    input wire [7:0] Istrc,
+    input wire [7:5] Istrc,
     output wire Jump,
     output wire LerMem,
     output wire EscreveMem,
@@ -25,7 +25,7 @@ module Controle (
     
     always@(Istrc)begin
         case (Istrc)
-        8'b00010001: begin//instruction defi
+        3'b000: begin//instruction defi
             escreveReg = 1;
             defi = 1;
             jump=0;
@@ -37,7 +37,7 @@ module Controle (
             uLASrc=0;
             encerra=0;
         end
-        8'b00101101: begin //instruction beq
+        8'b001: begin //instruction beq
             uLASrc = 1;
             branch = 1;
             escreveReg = 0;
@@ -49,7 +49,7 @@ module Controle (
             memtoREG=0;
             encerra=0;
         end
-        8'b01110010: begin //instruction sw
+        8'b011: begin //instruction sw
             escreveMem = 1;
             uLASrc = 0;
             branch = 0;
@@ -61,7 +61,7 @@ module Controle (
             memtoREG=0;
             encerra=0;
         end
-        8'b01010010: begin //instruction lw
+        8'b010: begin //instruction lw
             escreveReg = 1;
             memtoREG = 1;
             lerMem = 1;
@@ -73,7 +73,7 @@ module Controle (
             opULA=0;
             encerra=0;
         end
-        8'b10010000: begin //instruction mul
+        8'b100: begin //instruction mul
             escreveReg = 1;
             uLASrc = 1;
             opULA = 1;
@@ -85,7 +85,7 @@ module Controle (
             memtoREG=0;
             encerra=0;
         end
-        8'b10100001: begin //instruction subi
+        8'b101: begin //instruction subi
             escreveReg = 1;
             escreveMem = 0;
             uLASrc = 0;
@@ -97,7 +97,7 @@ module Controle (
             memtoREG=0;
             encerra=0;
         end
-        8'b11000011: begin //instruction j
+        8'b110: begin //instruction j
             jump = 1;
             escreveReg = 0;
             escreveMem = 0;
@@ -109,7 +109,7 @@ module Controle (
             memtoREG=0;
             encerra=0;
         end
-        8'b11100000: begin//instruction encerra
+        8'b111: begin//instruction encerra
             encerra = 1;
             jump = 0;
             escreveReg = 0;
