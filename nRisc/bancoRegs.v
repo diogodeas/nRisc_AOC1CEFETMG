@@ -1,7 +1,7 @@
 module bancoRegs (
   input wire clock,
-  input wire [1:0] in1,
-  input wire [1:0] in2,
+  input wire in1,
+  input wire in2,
   input wire inec,
   input wire [7:0] dado,
   output wire [7:0] out1,

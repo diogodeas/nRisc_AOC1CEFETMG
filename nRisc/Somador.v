@@ -1,7 +1,7 @@
 module Somador (
     input wire [7:0] iPC,
     output wire [7:0] out
-    );
+);
     
     reg [7:0] pc1;
     
