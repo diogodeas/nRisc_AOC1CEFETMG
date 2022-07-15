@@ -1,5 +1,5 @@
 module Controle (
-    input wire [7:5] Istrc,
+    input wire [2:0] Istrc,
     output wire Jump,
     output wire LerMem,
     output wire EscreveMem,

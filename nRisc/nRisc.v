@@ -30,7 +30,7 @@ module nRisc(
   wire [7:0] dadoMem = saidaDadoMem[7:0];
   wire [7:0] instrucao = saidaInstruction[7:0];  
 
-  wire [7:0] entradaPC;
+  
   wire [7:0] saidaPC;
 
   PC pc(
@@ -49,7 +49,6 @@ module nRisc(
 
   wire registrador2 = instrucao[3];
   wire registrador1 = instrucao[4];
-  wire [7:0] saidaMUX3;
   wire [7:0] saidabancoRegs1;
   wire [7:0] saidabancoRegs2;
 
@@ -140,12 +139,12 @@ module nRisc(
     saidaExtnSinal3
   );
 
-  output wire [7:0] saidaMux5;
+  wire [7:0] entradaPC;
 
   MUX5 mux5(
     saidaExtnSinal3,
     saidaMUX4,
-    saidaMux5,
+    entradaPC,
     Jump
   );
 
@@ -170,10 +169,19 @@ module nRisc(
   
   wire [7:0] saidaMUX2;
   MUX2 mux2(
-    dadoMem,
+    saidaDadoMem,
     resultadoULAp,
     saidaMUX2,
     MemtoReg
+  );
+
+  wire [7:0] saidaMUX3;
+
+  MUX3 mux3(
+    saidaExtnSinal2,
+    saidaMUX2,
+    saidaMUX3,
+    Defi
   );
 
   assign endereco = saidaExtnSinal2;
